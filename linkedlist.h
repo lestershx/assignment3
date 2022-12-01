@@ -58,3 +58,10 @@ void printList(linkedList * list);
  * @param list as a linkedList Struct
  */
 void mergeFreeBlocks(linkedList* list);
+
+/**
+ * Frees all the malloc'd nodes and the linkedList
+ *
+ * @param list as a linkedList Struct
+ */
+void freeNodes(linkedList* list);

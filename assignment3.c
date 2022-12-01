@@ -11,7 +11,7 @@
  *
  * Summary of File:
  *
- *  This program takes works on a real life application of LinkedLists. We take in a user
+ *  This program works on a real life application of LinkedLists. We take in a user
  *  input and can do 4 options. The user can upload a file, they can merge the holes,
  *  compact memory, and print memory view.
  *
@@ -49,6 +49,7 @@ int main() {
         printList(listPtr);
         break;
       case 5:
+        freeNodes(listPtr);
         exit(0);
       default:
         break;

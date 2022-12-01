@@ -125,3 +125,27 @@ void printList(linkedList * list) {
   }
   printf("\n");
 }
+
+/**
+ * Frees all the malloc'd nodes and the linkedList
+ *
+ * @param list as a linkedList Struct
+ */
+void freeNodes(linkedList* list) {
+
+  if (list->head == NULL) {
+    printf("list is empty");
+  }
+
+  node *ptr = NULL;
+  ptr = list->head->next;
+  while (ptr != NULL) {
+    free(ptr->before);
+    ptr = ptr->next;
+  }
+
+  free(ptr);
+
+  free(list);
+
+}
