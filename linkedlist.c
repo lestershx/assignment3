@@ -174,20 +174,17 @@ void checkBases(linkedList* list) {
  * @param list as a linkedList Struct
  */
 void freeNodes(linkedList* list) {
-
   if (list->head == NULL) {
     printf("Error: List is empty!");
   }
 
   node *ptr = NULL;
-  ptr = list->head->next;
+  ptr = (node *) list->head->next;
   while (ptr != NULL) {
     free(ptr->before);
-    ptr = ptr->next;
+    ptr = (node *) ptr->next;
   }
 
   free(ptr);
-
   free(list);
-
 }
