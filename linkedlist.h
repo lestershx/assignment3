@@ -58,3 +58,5 @@ void printList(linkedList * list);
  * @param list as a linkedList Struct
  */
 void mergeFreeBlocks(linkedList* list);
+
+void checkBases(linkedList* list);

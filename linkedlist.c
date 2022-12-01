@@ -44,19 +44,38 @@ node* constructNode(char* str) {
 }
 
 /**
- * Function to add new node structs to linkedList structs
+ * Inserts new nodes into the list in order of base value.
  *
- * @param newNode as a struct node
- * @param list as a linkedList struct
+ * NOTE: Adapted from the Insert Sort into Doubly Linked List from Geeks-for-Geeks
+ * https://www.geeksforgeeks.org/insert-value-sorted-way-sorted-doubly-linked-list/
+ *
+ * @param newNode node pointer to the node to be inserted
+ * @param list list pointer to the LinkedList
  */
 void addNode(node* newNode, linkedList* list) {
-  if (list->head == NULL) {
+  node* currentNode = list->head;
+  if (currentNode == NULL) {
     list->head = newNode;
     list->tail = newNode;
   }
-  list->tail->next = (struct node *) newNode;
-  newNode->before = (struct node *) list->tail;
-  list->tail = newNode;
+  else if (currentNode->base >= newNode->base) {
+    newNode->next = (struct node *) currentNode;
+    currentNode->before = (struct node *) newNode;
+    list->head = newNode;
+  } else {
+    node* aheadNode = (node *) currentNode->next;
+    while (currentNode->next != NULL && aheadNode->base < newNode->base) {
+      currentNode = (node *) currentNode->next;
+      aheadNode = (node *) currentNode->next;
+    }
+    newNode->next = currentNode->next;
+    if (currentNode->next != NULL) {
+      node* newNext = (node *) newNode->next;
+      newNext->before  = (struct node *) newNode;
+    }
+    currentNode->next = (struct node *) newNode;
+    newNode->before = (struct node *) currentNode;
+  }
 }
 
 /**
@@ -124,4 +143,21 @@ void printList(linkedList * list) {
     nodeNum++;
   }
   printf("\n");
+}
+
+void checkBases(linkedList* list) {
+  node* currentNode = list->head;
+  if (currentNode == NULL) {
+    printf("Error: List is empty!");
+    exit(-1);
+  }
+  while (currentNode != NULL) {
+    int nextBase = currentNode->base + currentNode->limit;
+    node* nextNode = (node *) currentNode->next;
+    if (nextNode != NULL && nextNode->base != nextBase) {
+      printf("Error: Base numbers do not match!");
+      exit(-1);
+    }
+    currentNode = (node*) currentNode->next;
+  }
 }

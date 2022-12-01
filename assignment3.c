@@ -39,6 +39,7 @@ int main() {
         FILE *fp;
         fp = fopen(fileName, "r");
         loadInput(fp, listPtr);
+        checkBases(listPtr);
         break;
       case 2:
         mergeFreeBlocks(listPtr);
