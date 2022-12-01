@@ -20,7 +20,7 @@
 /**
  * Main function, runs the program.
  *
- * @return 0
+ * @return 0 if program runs successfully, non-zero otherwise
  */
 int main() {
   linkedList* listPtr = malloc(sizeof(linkedList));
@@ -28,8 +28,8 @@ int main() {
   int menuOption = 0;
   char fileName[100];
 
-  while (menuOption != 5  && menuOption < 6) {
-    printf("\n1. load an input file\n2. merge holes\n3. compact memory\n4. print memory view\n5. Exit the program\n");
+  while (menuOption != 5) {
+    printf("1. Load an input file\n2. Merge holes\n3. Compact memory\n4. Print memory view\n5. Exit the program\n");
     scanf("%d", &menuOption);
     switch(menuOption) {
       case 1:{
