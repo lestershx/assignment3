@@ -28,7 +28,7 @@ int main() {
   int menuOption = 0;
   char fileName[100];
 
-  while (menuOption != 5) {
+  while (menuOption != 5  && menuOption < 6) {
     printf("\n1. load an input file\n2. merge holes\n3. compact memory\n4. print memory view\n5. Exit the program\n");
     scanf("%d", &menuOption);
     switch(menuOption) {
@@ -62,6 +62,10 @@ int main() {
         break;
       }
     }
+  }
+  if (menuOption >= 6) {
+    printf("Error: Invalid menu selection!");
+    exit(-1);
   }
   return 0;
 }
