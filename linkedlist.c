@@ -85,7 +85,7 @@ void addNode(node* newNode, linkedList* list) {
  */
 void mergeFreeBlocks(linkedList* list) {
   if (list->head == NULL) {
-    printf("File has not been uploaded, please upload a file.\n");
+    printf("Error: File has not been uploaded, please upload a file.\n");
     return;
   }
   node *currentNode = list->head; //Assign head to node
