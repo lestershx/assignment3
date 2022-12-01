@@ -1,3 +1,5 @@
+#include <stdio.h>
+#include <stdlib.h>
 typedef struct {
     int status; //0 if P, 1 if H
     char identifier[30];
@@ -19,3 +21,5 @@ node* constructNode(char* str);
 void addNode(node* newNode, linkedList* list);
 
 void printList(linkedList * list);
+
+void mergeFreeBlocks(linkedList* list);
