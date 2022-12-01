@@ -21,6 +21,7 @@ int main() {
         loadInput(fp, listPtr);
         break;
       case 2:
+        mergeFreeBlocks(listPtr);
         break;
       case 3:
         break;

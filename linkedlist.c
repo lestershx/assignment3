@@ -47,6 +47,20 @@ void addNode(node* newNode, linkedList* list) {
   list->tail = newNode;
 }
 
+void mergeFreeBlocks(linkedList* list) {
+  node *currentNode = list->head; //Assign head to node
+  while (currentNode != NULL && currentNode->next != NULL) { //While node is not null
+    node *nextNode = (node *) currentNode->next; //Assign next node
+    if (currentNode->status == 1 && nextNode->status == 1) { //If this node and next node are holes
+      currentNode->limit += nextNode->limit; //Add the limits together
+      currentNode->next = nextNode->next; //Skip the next node
+    } else {
+      currentNode = (node *) currentNode->next;
+    }
+  }
+  printf("operation successful\n");
+}
+
 void loadInput(FILE* fp, linkedList* list){
   char buffer[100];
 
