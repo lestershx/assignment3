@@ -17,7 +17,7 @@ void compact(linkedList * list) {
     //first iteration, check for how many limit in total
     node * currentNode = list->head;
     int spaceOccu = 0;
-    while (currentNode->next != NULL) {
+    while (currentNode != NULL) {
         if (currentNode->status == 0) {
             spaceOccu += currentNode->limit;
         }
