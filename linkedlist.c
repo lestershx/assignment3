@@ -48,12 +48,13 @@ void compact(linkedList * list) {
             currentNode->base = pPtr;//set the base no. to the pointer location
             pPtr = pPtr + currentNode->limit;//move pointer by the limit
             previousP = currentNode;//make this node the previous P for later use
+
         }
         if (currentNode->status == 1) {//if H
             if (firstHNode == 1) {//if it's first H node, set this node up to be added later
                 currentNode->base = hPtr;//the base is at hPtr
                 onlyHoleNode = currentNode;//becomes the only H node
-                list->tail = currentNode;
+                list->tail = onlyHoleNode;
                 if (previousP != NULL) {//if there's a previous P
                     onlyHoleNode->before = (struct node *)previousP;//set its parent to the previous P
                 } else {
@@ -71,6 +72,7 @@ void compact(linkedList * list) {
 
     onlyHoleNode->next = NULL;//make sure the node isn't linking to a child
     onlyHoleNode->before = (struct node *) previousP;//make sure the h node is linked to the last p node
+    previousP->next = (node *)onlyHoleNode;
 
     printf("Operation successful");
 }
