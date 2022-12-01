@@ -53,14 +53,12 @@ void mergeFreeBlocks(linkedList* list) {
     node *nextNode = (node *) currentNode->next; //Assign next node
     if (currentNode->status == 1 && nextNode->status == 1) { //If this node and next node are holes
       currentNode->limit += nextNode->limit; //Add the limits together
-      printf("currentNode: %d\n", currentNode->limit);
       currentNode->next = nextNode->next; //Skip the next node
-      printf("new currentNode: %d\n", currentNode->limit);
     } else {
       currentNode = (node *) currentNode->next;
     }
   }
-  printf("Merged holes.\n");
+  printf("operation successful\n");
 }
 
 void loadInput(FILE* fp, linkedList* list){
