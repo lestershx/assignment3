@@ -20,7 +20,7 @@
 /**
  * Main function, runs the program.
  *
- * @return 0
+ * @return 0 if program runs successfully, non-zero otherwise
  */
 int main() {
   linkedList* listPtr = malloc(sizeof(linkedList));
