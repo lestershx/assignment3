@@ -118,7 +118,6 @@ void loadInput(FILE* fp, linkedList* list){
     node* memNode = constructNode(buffer);
     addNode(memNode, list);
   }
-  printf("operation successful\n");
 }
 
 /**
@@ -160,4 +159,5 @@ void checkBases(linkedList* list) {
     }
     currentNode = (node*) currentNode->next;
   }
+  printf("operation successful\n");
 }
