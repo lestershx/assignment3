@@ -63,5 +63,9 @@ int main() {
       }
     }
   }
+  if (menuOption >= 6) {
+    printf("Error: Invalid menu selection!");
+    exit(-1);
+  }
   return 0;
 }
