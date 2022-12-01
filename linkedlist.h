@@ -52,6 +52,12 @@ void addNode(node* newNode, linkedList* list);
  */
 void printList(linkedList * list);
 
+/**
+ * This function compacts together the Processes and puts the Holes together at the end
+ * of the list.
+ *
+ * @param list as a linkedList struct
+ */
 void compact(linkedList * list);
 
 /**

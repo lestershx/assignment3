@@ -3,9 +3,15 @@
 #include <string.h>
 #include "linkedlist.h"
 
+/**
+ * This function compacts together the Processes and puts the Holes together at the end
+ * of the list.
+ *
+ * @param list as a linkedList struct
+ */
 void compact(linkedList * list) {
     if (list->head == NULL) {
-        perror("Input file error.");
+        perror("Error: File has not been uploaded, please upload a file.\n");
         exit(-1);
     }
     //first iteration, check for how many limit in total
