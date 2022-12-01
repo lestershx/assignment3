@@ -74,7 +74,7 @@ void compact(linkedList * list) {
     onlyHoleNode->before = (struct node *) previousP;//make sure the h node is linked to the last p node
     previousP->next = (node *)onlyHoleNode;
 
-    printf("Operation successful");
+    printf("Operation successful\n");
 }
 
 /**
@@ -108,6 +108,10 @@ node* constructNode(char* str) {
     //Limit token
     if (i == 3) {
       currentNode->limit = atoi(token);
+    }
+    if (i >= 4) {
+      printf("Error: Unexpected token!");
+      exit(-1);
     }
     token = strtok(NULL, " \n");
     i++;
@@ -172,7 +176,10 @@ void mergeFreeBlocks(linkedList* list) {
       currentNode = (node *) currentNode->next;
     }
   }
-  printf("operation successful\n");
+  if (currentNode->next == NULL) {
+    list->tail = currentNode;
+  }
+  printf("Operation successful\n");
 }
 
 /**
@@ -238,7 +245,7 @@ void checkBases(linkedList* list) {
     }
     currentNode = (node*) currentNode->next;
   }
-  printf("operation successful\n");
+  printf("Operation successful\n");
 }
 
 /**
