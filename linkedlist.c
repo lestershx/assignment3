@@ -4,6 +4,10 @@
 #include "linkedlist.h"
 
 void compact(linkedList * list) {
+    if (list->head == NULL) {
+        perror("Input file error.");
+        exit(-1);
+    }
     //first iteration, check for how many limit in total
     node * currentNode = list->head;
     int spaceOccu = 0;
