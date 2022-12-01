@@ -101,10 +101,24 @@ node* constructNode(char* str) {
     }
     //Base token
     if (i == 2) {
+      int length = strlen(token);
+      for (int j = 0; j < length; ++j) {
+        if (token[j] > 57 || token[j] < 48) {
+          printf("Error: Invalid base value!");
+          exit(-1);
+        }
+      }
       currentNode->base = atoi(token);
     }
     //Limit token
     if (i == 3) {
+      int length = strlen(token);
+      for (int j = 0; j < length; ++j) {
+        if (token[j] > 57 || token[j] < 48) {
+          printf("Error: Invalid limit value!");
+          exit(-1);
+        }
+      }
       currentNode->limit = atoi(token);
     }
     if (i >= 4) {
