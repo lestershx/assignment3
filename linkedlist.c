@@ -174,6 +174,9 @@ void mergeFreeBlocks(linkedList* list) {
       currentNode = (node *) currentNode->next;
     }
   }
+  if (currentNode->next == NULL) {
+    list->tail = currentNode;
+  }
   printf("Operation successful\n");
 }
 
