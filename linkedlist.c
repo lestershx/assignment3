@@ -3,6 +3,12 @@
 #include <string.h>
 #include "linkedlist.h"
 
+/**
+ * Constructs the node structs.
+ *
+ * @param str as a char pointer
+ * @return currentNode
+ */
 node* constructNode(char* str) {
   node* currentNode = malloc(sizeof(node));
   char* token = strtok(str, " \n");
@@ -37,6 +43,12 @@ node* constructNode(char* str) {
   return currentNode;
 }
 
+/**
+ * Function to add new node structs to linkedList structs
+ *
+ * @param newNode as a struct node
+ * @param list as a linkedList struct
+ */
 void addNode(node* newNode, linkedList* list) {
   if (list->head == NULL) {
     list->head = newNode;
@@ -47,7 +59,16 @@ void addNode(node* newNode, linkedList* list) {
   list->tail = newNode;
 }
 
+/**
+ * Function merges consecutive holes in the linkedList
+ *
+ * @param list as a linkedList Struct
+ */
 void mergeFreeBlocks(linkedList* list) {
+  if (list->head == NULL) {
+    printf("File has not been uploaded, please upload a file");
+    return;
+  }
   node *currentNode = list->head; //Assign head to node
   while (currentNode != NULL && currentNode->next != NULL) { //While node is not null
     node *nextNode = (node *) currentNode->next; //Assign next node
@@ -61,6 +82,12 @@ void mergeFreeBlocks(linkedList* list) {
   printf("operation successful\n");
 }
 
+/**
+ * Loads the file, and creates the nodes.
+ *
+ * @param fp as a file pointer
+ * @param list as a linkedList struct
+ */
 void loadInput(FILE* fp, linkedList* list){
   char buffer[100];
 
@@ -75,6 +102,11 @@ void loadInput(FILE* fp, linkedList* list){
   printf("operation successful\n");
 }
 
+/**
+ * Prints the memory view.
+ *
+ * @param list as a linkedList struct
+ */
 void printList(linkedList * list) {
   node* currentNode = list->head;
   if (currentNode == NULL) {

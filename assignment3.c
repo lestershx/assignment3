@@ -2,6 +2,26 @@
 #include <stdlib.h>
 #include "linkedlist.h"
 
+/**
+ * File: assignment3.c
+ *
+ * Author: Lester Shun, Caroline Lin, Betty Nguyen, Izabelle Datayan
+ * Date: November 30, 2022
+ * Course: COMP 2510
+ *
+ * Summary of File:
+ *
+ *  This program takes works on a real life application of LinkedLists. We take in a user
+ *  input and can do 4 options. The user can upload a file, they can merge the holes,
+ *  compact memory, and print memory view.
+ *
+ */
+
+/**
+ * Main function, runs the program.
+ *
+ * @return 0
+ */
 int main() {
   linkedList* listPtr = malloc(sizeof(linkedList));
   listPtr->head = NULL;
