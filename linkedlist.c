@@ -107,6 +107,10 @@ node* constructNode(char* str) {
     if (i == 3) {
       currentNode->limit = atoi(token);
     }
+    if (i >= 4) {
+      printf("Error: Unexpected token!");
+      exit(-1);
+    }
     token = strtok(NULL, " \n");
     i++;
   }
