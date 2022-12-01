@@ -79,7 +79,7 @@ void addNode(node* newNode, linkedList* list) {
 }
 
 /**
- * Function merges consecutive holes in the linkedList
+ * Function merges consecutive holes in the linkedList.
  *
  * @param list as a linkedList Struct
  */
@@ -169,7 +169,7 @@ void checkBases(linkedList* list) {
 }
 
 /**
- * Frees all the malloc'd nodes and the linkedList
+ * Frees all the malloc'd nodes and the linkedList.
  *
  * @param list as a linkedList Struct
  */

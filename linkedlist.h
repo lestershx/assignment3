@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 /**
- * Struct for the Node
+ * Struct for the Node.
  */
 typedef struct {
     int status; //0 if P, 1 if H
@@ -14,7 +14,7 @@ typedef struct {
 } node;
 
 /**
- * Struct for the LinkedList
+ * Struct for the LinkedList.
  */
 typedef struct {
     node* head;
@@ -38,7 +38,7 @@ void loadInput(FILE* fp, linkedList* list);
 node* constructNode(char* str);
 
 /**
- * Function to add new node structs to linkedList structs
+ * Function to add new node structs to linkedList structs.
  *
  * @param newNode as a struct node
  * @param list as a linkedList struct
@@ -53,7 +53,7 @@ void addNode(node* newNode, linkedList* list);
 void printList(linkedList * list);
 
 /**
- * Function merges consecutive holes in the linkedList
+ * Function merges consecutive holes in the linkedList.
  *
  * @param list as a linkedList Struct
  */
@@ -67,7 +67,7 @@ void mergeFreeBlocks(linkedList* list);
 void checkBases(linkedList* list);
 
 /**
- * Frees all the malloc'd nodes and the linkedList
+ * Frees all the malloc'd nodes and the linkedList.
  *
  * @param list as a linkedList Struct
  */
