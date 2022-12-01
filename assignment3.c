@@ -32,7 +32,7 @@ int main() {
     printf("\n1. load an input file\n2. merge holes\n3. compact memory\n4. print memory view\n5. Exit the program\n");
     scanf("%d", &menuOption);
     switch(menuOption) {
-      case 1:
+      case 1:{
         printf("1. Type the file name: ");
         scanf("%s", fileName);
 
@@ -41,20 +41,26 @@ int main() {
         loadInput(fp, listPtr);
         checkBases(listPtr);
         break;
-      case 2:
+    }
+      case 2: {
         mergeFreeBlocks(listPtr);
         break;
-      case 3:
+      }
+      case 3: {
         compact(listPtr->head);
         break;
-      case 4:
+      }
+      case 4: {
         printList(listPtr);
         break;
-      case 5:
+      }
+      case 5: {
         freeNodes(listPtr);
         exit(0);
-      default:
+      }
+      default: {
         break;
+      }
     }
   }
   return 0;
