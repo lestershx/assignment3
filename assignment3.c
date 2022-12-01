@@ -45,7 +45,7 @@ int main() {
         mergeFreeBlocks(listPtr);
         break;
       case 3:
-        compact(listPtr->head);
+        compact(listPtr);
         break;
       case 4:
         printList(listPtr);

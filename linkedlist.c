@@ -3,9 +3,9 @@
 #include <string.h>
 #include "linkedlist.h"
 
-void compact(node * head) {
+void compact(linkedList * list) {
     //first iteration, check for how many limit in total
-    node * currentNode = head;
+    node * currentNode = list->head;
     int spaceOccu = 0;
     while (currentNode->next != NULL) {
         if (currentNode->status == 0) {
@@ -22,13 +22,14 @@ void compact(node * head) {
     int hPtr = spaceOccu;
     int firstHNode = 1;
     int firstPNode = 1;
-    currentNode = head;
+    currentNode = list->head;
     node* onlyHoleNode = malloc(sizeof (node));
     node* previousP = malloc(sizeof (node));
     while (currentNode != NULL) {
         if (currentNode->status == 0) { //if P
             if (firstPNode == 1) {//if this is the first P node
                 currentNode->before = NULL;//clean out its parent
+                list->head = currentNode;
                 firstPNode = 0;
             } else {
                 currentNode->before = (struct node *)previousP;//set its parent to the previous P
@@ -42,7 +43,7 @@ void compact(node * head) {
             if (firstHNode == 1) {//if it's first H node, set this node up to be added later
                 currentNode->base = hPtr;//the base is at hPtr
                 onlyHoleNode = currentNode;//becomes the only H node
-                onlyHoleNode->next = NULL;//nothing behind it
+                list->tail = currentNode;
                 if (previousP != NULL) {//if there's a previous P
                     onlyHoleNode->before = (struct node *)previousP;//set its parent to the previous P
                 } else {
@@ -58,9 +59,8 @@ void compact(node * head) {
         currentNode = (node *)currentNode->next;
     }
 
-
-    free(onlyHoleNode);
-    free(previousP);
+    onlyHoleNode->next = NULL;//nothing behind it
+    onlyHoleNode->before = (struct node *) previousP;
 
     printf("Operation successful");
 }
@@ -180,7 +180,6 @@ void loadInput(FILE* fp, linkedList* list){
     node* memNode = constructNode(buffer);
     addNode(memNode, list);
   }
-  printf("operation successful\n");
 }
 
 /**

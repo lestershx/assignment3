@@ -52,7 +52,7 @@ void addNode(node* newNode, linkedList* list);
  */
 void printList(linkedList * list);
 
-void compact(node * head);
+void compact(linkedList * list);
 
 /**
  * Function merges consecutive holes in the linkedList.
