@@ -60,6 +60,13 @@ void printList(linkedList * list);
 void mergeFreeBlocks(linkedList* list);
 
 /**
+ * Checks to make sure the bases go in order.
+ *
+ * @param list as a linkedList struct
+ */
+void checkBases(linkedList* list);
+
+/**
  * Frees all the malloc'd nodes and the linkedList
  *
  * @param list as a linkedList Struct
