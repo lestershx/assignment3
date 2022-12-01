@@ -9,7 +9,7 @@ int main() {
   char fileName[100];
 
   while (menuOption != 5) {
-    printf("1. load an input file\n2. merge holes\n3. compact memory\n4. print memory view\n5. Exit the program\n");
+    printf("\n1. load an input file\n2. merge holes\n3. compact memory\n4. print memory view\n5. Exit the program\n");
     scanf("%d", &menuOption);
     switch(menuOption) {
       case 1:
@@ -23,6 +23,7 @@ int main() {
       case 2:
         break;
       case 3:
+        compact(listPtr->head);
         break;
       case 4:
         printList(listPtr);

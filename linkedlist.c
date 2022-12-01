@@ -3,6 +3,69 @@
 #include <string.h>
 #include "linkedlist.h"
 
+void compact(node * head) {
+    //first iteration, check for how many limit in total
+    node * currentNode = head;
+    int spaceOccu = 0;
+    while (currentNode->next != NULL) {
+        if (currentNode->status == 0) {
+            spaceOccu += currentNode->limit;
+        }
+        currentNode = (node *)currentNode->next;
+    }
+
+    //second iteration
+    //P pointer set at 0 and H pointer set at spaceOccu
+    //if P node, move base to 0, set P pointer to pointer(0 at first)+limit
+    //if H pointer, move base to spaceOccu, set H pointer to pointer(spaceOccu at first)+limit
+    int pPtr = 0;
+    int hPtr = spaceOccu;
+    int firstHNode = 1;
+    int firstPNode = 1;
+    currentNode = head;
+    node* onlyHoleNode = malloc(sizeof (node));
+    node* previousP = malloc(sizeof (node));
+    while (currentNode != NULL) {
+        if (currentNode->status == 0) { //if P
+            if (firstPNode == 1) {//if this is the first P node
+                currentNode->before = NULL;//clean out its parent
+                firstPNode = 0;
+            } else {
+                currentNode->before = (struct node *)previousP;//set its parent to the previous P
+                previousP->next = (struct node *) currentNode;//set previous P node's child
+            }
+            currentNode->base = pPtr;//set the base no. to the pointer location
+            pPtr = pPtr + currentNode->limit;//move pointer by the limit
+            previousP = currentNode;//make this node the previous P for later use
+        }
+        if (currentNode->status == 1) {//if H
+            if (firstHNode == 1) {//if it's first H node, set this node up to be added later
+                currentNode->base = hPtr;//the base is at hPtr
+                onlyHoleNode = currentNode;//becomes the only H node
+                onlyHoleNode->next = NULL;//nothing behind it
+                if (previousP != NULL) {//if there's a previous P
+                    onlyHoleNode->before = (struct node *)previousP;//set its parent to the previous P
+                } else {
+                    onlyHoleNode->before = NULL;
+                }
+                firstHNode = 0;
+            } else {//not the first H node
+                onlyHoleNode->limit += currentNode->limit;//go to the first H node, and add to the limit
+                onlyHoleNode->before = (struct node *) previousP;//set the last P node to parent of onlyHoleNode
+                previousP->next = (struct node *) onlyHoleNode;
+            }
+        }
+        currentNode = (node *)currentNode->next;
+    }
+
+
+    free(onlyHoleNode);
+    free(previousP);
+
+    printf("Operation successful");
+}
+
+
 node* constructNode(char* str) {
   node* currentNode = malloc(sizeof(node));
   char* token = strtok(str, " \n");

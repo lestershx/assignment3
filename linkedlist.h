@@ -19,3 +19,5 @@ node* constructNode(char* str);
 void addNode(node* newNode, linkedList* list);
 
 void printList(linkedList * list);
+
+void compact(node * head);
