@@ -29,7 +29,7 @@ int main() {
   char fileName[100];
 
   while (menuOption != 5) {
-    printf("\n1. load an input file\n2. merge holes\n3. compact memory\n4. print memory view\n5. Exit the program\n");
+    printf("1. Load an input file\n2. Merge holes\n3. Compact memory\n4. Print memory view\n5. Exit the program\n");
     scanf("%d", &menuOption);
     switch(menuOption) {
       case 1:{

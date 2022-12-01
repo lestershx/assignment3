@@ -72,7 +72,7 @@ void compact(linkedList * list) {
     onlyHoleNode->next = NULL;//make sure the node isn't linking to a child
     onlyHoleNode->before = (struct node *) previousP;//make sure the h node is linked to the last p node
 
-    printf("Operation successful");
+    printf("Operation successful\n");
 }
 
 /**
@@ -170,7 +170,7 @@ void mergeFreeBlocks(linkedList* list) {
       currentNode = (node *) currentNode->next;
     }
   }
-  printf("operation successful\n");
+  printf("Operation successful\n");
 }
 
 /**
@@ -236,7 +236,7 @@ void checkBases(linkedList* list) {
     }
     currentNode = (node*) currentNode->next;
   }
-  printf("operation successful\n");
+  printf("Operation successful\n");
 }
 
 /**
