@@ -59,8 +59,8 @@ void compact(linkedList * list) {
         currentNode = (node *)currentNode->next;
     }
 
-    onlyHoleNode->next = NULL;//nothing behind it
-    onlyHoleNode->before = (struct node *) previousP;
+    onlyHoleNode->next = NULL;//make sure the node isn't linking to a child
+    onlyHoleNode->before = (struct node *) previousP;//make sure the h node is linked to the last p node
 
     printf("Operation successful");
 }
