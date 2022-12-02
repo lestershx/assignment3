@@ -4,7 +4,7 @@
 /**
  * Struct for the Node.
  */
-typedef struct {
+typedef struct node{
     int status; //0 if P, 1 if H
     char identifier[30];
     int base; // start index
@@ -12,6 +12,7 @@ typedef struct {
     struct node* before;
     struct node* next;
 } node;
+
 
 /**
  * Struct for the LinkedList.

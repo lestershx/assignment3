@@ -30,11 +30,13 @@ void compact(linkedList * list) {
     //if H pointer, move base to spaceOccu, set H pointer to pointer(spaceOccu at first)+limit
     int pPtr = 0;
     int hPtr = spaceOccu;
-    int firstHNode = 1;
+    int firstHNode = 1;//boolean true
     int firstPNode = 1;
-    currentNode = list->head;
+    int otherHNode = 0;
     node* onlyHoleNode = malloc(sizeof (node));
-    node* previousP = malloc(sizeof (node));
+    node * previousP = malloc(sizeof (node));
+
+    currentNode = list->head;//set up for iteration
     while (currentNode != NULL) {
         if (currentNode->status == 0) { //if P
             if (firstPNode == 1) {//if this is the first P node
@@ -48,7 +50,6 @@ void compact(linkedList * list) {
             currentNode->base = pPtr;//set the base no. to the pointer location
             pPtr = pPtr + currentNode->limit;//move pointer by the limit
             previousP = currentNode;//make this node the previous P for later use
-
         }
         if (currentNode->status == 1) {//if H
             if (firstHNode == 1) {//if it's first H node, set this node up to be added later
@@ -65,16 +66,27 @@ void compact(linkedList * list) {
                 onlyHoleNode->limit += currentNode->limit;//go to the first H node, and add to the limit
                 onlyHoleNode->before = (struct node *) previousP;//set the last P node to parent of onlyHoleNode
                 previousP->next = (struct node *) onlyHoleNode;
+                otherHNode = 1;
             }
         }
-        currentNode = (node *)currentNode->next;
+        if (currentNode->next == NULL) {//if the current node is the last
+            free(currentNode);//free this node
+            break;
+        } else {//if there's more node to come
+            currentNode = (node *)currentNode->next;//traverse
+            if(currentNode->before->status == 1 && otherHNode == 1) {//if the previous node is h and not the first h
+                free(currentNode->before);//free the previous node (which is an h node)
+                otherHNode = 0;
+            }
+        }
+
     }
 
-    onlyHoleNode->next = NULL;//make sure the node isn't linking to a child
-    onlyHoleNode->before = (struct node *) previousP;//make sure the h node is linked to the last p node
-    previousP->next = (struct node *)onlyHoleNode;
+    onlyHoleNode->next = NULL;//make sure the H node isn't linking to a child
+    onlyHoleNode->before = (struct node *) previousP;//make sure the H node is linked to the last P node
+    previousP->next = (struct node *)onlyHoleNode;//make sure the last P node is linked to the only h node
 
-    printf("Operation successful\n");
+    printf("\nOperation successful\n");
 }
 
 /**
